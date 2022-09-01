@@ -1,11 +1,12 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro'
 
 export const Navbar = () => {
     return (
-        <MyNav >
-            <NavTitle>mimir</NavTitle>
+        <MyNav fancy>
+            <NavTitle to="/">mimir</NavTitle>
             <StatusPill>New Game</StatusPill>
-            <ManageLink>Manage Cards</ManageLink>
+            <ManageLink to="/cards">Manage Cards</ManageLink>
         </MyNav>
     );
 }
@@ -21,10 +22,11 @@ const MyNav = styled.nav<NavbarProps>`
     align-items: center;
 `
 
-const NavTitle = styled.div`
+const NavTitle = styled(Link)`
     padding: 20px;
     font-size: calc(10px + 2vmin);
     color: white;
+    text-decoration: none;
 `
 
 const StatusPill = styled.div`
@@ -37,8 +39,9 @@ const StatusPill = styled.div`
     text-decoration: none;
 `
 
-const ManageLink = styled.div`
+const ManageLink = styled(Link)`
     padding: 20px;
     font-size: calc(1px + 2vmin);
     color: white;
+    text-decoration: none;
 `
