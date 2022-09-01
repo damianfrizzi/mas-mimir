@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 
-export function Home() {
+export const Home = () => {
   return <Main>You're home!</Main>
 }
 

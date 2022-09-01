@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 
-export function EditCard() {
+export const EditCard = () => {
     return <Main>Edit cards here</Main>
 }
 
