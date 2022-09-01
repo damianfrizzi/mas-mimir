@@ -1,10 +1,10 @@
 import React from "react";
 import { Routes, Route } from 'react-router-dom'
-import { Home } from "Pages/Home"
-import { Layout } from 'Layout';
-import { CardOverview } from "Pages/CardOverview";
-import { CardList } from "Pages/CardList";
-import { EditCard } from "Pages/EditCard";
+import { Home } from "components/pages/Home"
+import { Layout } from 'components/layout/Layout';
+import { CardOverview } from "components/pages/CardOverview";
+import { CardList } from "components/pages/CardList";
+import { EditCard } from "components/pages/EditCard";
 
 
 export default function App() {
