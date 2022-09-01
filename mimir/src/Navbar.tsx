@@ -2,10 +2,10 @@ import styled from 'styled-components/macro'
 
 export const Navbar = () => {
     return (
-        <MyNav fancy>
+        <MyNav >
             <NavTitle>mimir</NavTitle>
-            <StatusPill>Status</StatusPill>
-            <NavTitle>Manage</NavTitle>
+            <StatusPill>New Game</StatusPill>
+            <ManageLink>Manage Cards</ManageLink>
         </MyNav>
     );
 }
@@ -38,5 +38,7 @@ const StatusPill = styled.div`
 `
 
 const ManageLink = styled.div`
-    
+    padding: 20px;
+    font-size: calc(1px + 2vmin);
+    color: white;
 `

@@ -1,10 +1,10 @@
-import { Routes, Route } from 'react-router-dom'
 import React from "react";
-import logo from "./logo.svg";
-import { Navbar } from "./Navbar"
-import { Home } from "./Home"
-import "./App.css";
+import { Routes, Route } from 'react-router-dom'
+import { Home } from "Pages/Home"
 import { Layout } from 'Layout';
+import { CardOverview } from "Pages/CardOverview";
+import { CardList } from "Pages/CardList";
+import { EditCard } from "Pages/EditCard";
 
 
 export default function App() {
@@ -13,6 +13,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="cards" element={<CardOverview />}>
+            <Route index element={<CardList />} />
+            <Route path=":id" element={<EditCard />} />
+          </Route>
         </Route>
       </Routes>
     </>
