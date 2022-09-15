@@ -1,18 +1,23 @@
+import { CardItem } from "./CardItem"
 
 type InitializeAction = {
     type: 'initialize'
-    //cards: CardItem[]
+    cards: CardItem[]
 }
 
 type AddCardAction = {
     type: 'add-card'
-    front: string
-    back: string
+    card: CardItem
 }
 
 type DeleteCardAction = {
     type: 'delete-card'
-    id: string
+    card: CardItem
 }
 
-export type Action = AddCardAction | DeleteCardAction | InitializeAction
+type UpdateCardAction = {
+    type: 'update-card'
+    card: CardItem
+}
+
+export type Action = AddCardAction | DeleteCardAction | InitializeAction | UpdateCardAction

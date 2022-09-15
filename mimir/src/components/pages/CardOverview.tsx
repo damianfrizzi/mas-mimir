@@ -4,7 +4,7 @@ import styled from 'styled-components/macro'
 export const CardOverview = () => {
   return (
     <>
-      <Main>Here will be  the cards overview Page!</Main>
+      <Main>Learning Cards</Main>
       <Outlet />
     </>
   );

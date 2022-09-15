@@ -1,72 +1,24 @@
-import { v4 as createId } from 'uuid'
-import { CardItem } from 'models/CardItem'
 import { Action } from 'models/Action'
-import { CardState } from 'models/CardState'
+import { CardsState } from 'models/CardState'
 
-export function cardReducer(cardState: CardState, action: Action): CardState {
-
-    
-    const postCard = async (card: CardItem) => {
-
-        try {
-            const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(card)
-            };
-            const res = await fetch(`/api/cards/`, requestOptions)
-            if (!res.ok) {
-                throw new Error(`Backend HTTP error: Status ${res.status}`)
-            }
-            //const json: CardItem = await res.json()
-
-        } catch (err) {
-            //setError("Something went wrong");
-        }
-    };
-
-    const deleteCard = async (id: string) => {
-
-        try {
-            const requestOptions = {
-                method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(cardState.cards.find(x =>  x.id === id))
-            };
-            const res = await fetch(`/api/cards/` +  id, requestOptions)
-            if (!res.ok) {
-                throw new Error(`Backend HTTP error: Status ${res.status}`)
-            }
-
-        } catch (err) {
-            //setError("Something went wrong");
-        }
-    };
+export function cardReducer(cardState: CardsState, action: Action): CardsState {
 
     switch (action.type) {
         case 'add-card':
-            const newCard: CardItem = {
-                id: createId(),
-                front: action.front,
-                back: action.back
-            }
-            postCard(newCard)
-            cardState.cards.push(newCard)
+            cardState.cards.push(action.card)
             return { ...cardState }
         case 'delete-card':
-            deleteCard(action.id)
-            return {...cardState, cards: cardState.cards.filter(x => x.id !== action.id)}
+            return { ...cardState, cards: cardState.cards.filter(x => x !== action.card) }
         case 'initialize':
-            return {...cardState}
+            return { ...cardState, cards: action.cards }
+        case 'update-card':
+            const newList = cardState.cards.map(card => {
+                if(card.id === action.card.id){
+                    return {...card, front: action.card.front, back: action.card.back}
+                }
+                return card
+            })
+            return { ...cardState, cards: newList }
+
     }
-}
-
-const newCard: CardItem = {
-    id: createId(),
-    front: 'front',
-    back: 'back'
-}
-
-export const initialListState: CardState = {
-    cards: [newCard]
 }

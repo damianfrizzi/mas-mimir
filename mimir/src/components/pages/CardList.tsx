@@ -22,6 +22,8 @@ export const CardList = () => {
   const add = async (front: string, back: string) => {
     const resCard = await addCard(front, back)
     dispatch({ type: 'add-card', card: resCard })
+    setInputFront('')
+    setInputBack('')
   }
 
   const del = async (card: CardItem) => {
@@ -32,8 +34,8 @@ export const CardList = () => {
   return (
     <Main>
       <InputContainer>
-        <Input onChange={e => setInputFront(e.target.value)} />
-        <Input onChange={e => setInputBack(e.target.value)} />
+        <Input onChange={e => setInputFront(e.target.value)} value={inputFront}/>
+        <Input onChange={e => setInputBack(e.target.value)} value={inputBack}/>
         <Button onClick={() => add(inputFront, inputBack)}>Add</Button>
       </InputContainer>
       <OverviewList>

@@ -1,5 +1,9 @@
 import { CardItem } from "./CardItem";
 
-export interface CardState {
+export interface CardsState {
     cards: CardItem[]
 }
+
+export const initialCardsState: CardsState =  {
+    cards: []
+} 
