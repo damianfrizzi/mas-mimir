@@ -1,63 +1,54 @@
+import { fetchCards, addCard, deleteCard } from "api/mimir-backend";
+import { AppContext } from "data/Context";
 import { CardItem } from "models/CardItem";
-import { useEffect, useReducer, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { cardReducer, initialListState } from "reducers/cardReducer";
 import styled from "styled-components/macro";
 
 
 export const CardList = () => {
-  //const [data, setData] = useState([]);
-  const [error, setError] = useState<string | null>(null);
   const [inputFront, setInputFront] = useState('')
   const [inputBack, setInputBack] = useState('')
-  const [state, dispatch] = useReducer(cardReducer, initialListState)
-
-  const fetchData = async () => {
-    try {
-      const res = await fetch(`/api/cards/`);
-      if (!res.ok) {
-        throw new Error(`Backend HTTP error: Status ${res.status}`);
-      }
-      state.cards = await res.json();
-      dispatch({ type: 'initialize' })
-    } catch (err) {
-      setError("Something went wrong");
-    }
-  };
+  const { cards, dispatch } = useContext(AppContext)
 
   useEffect(() => {
-    fetchData();
+    const onMount = async () => {
+      const cards = await fetchCards()
+      dispatch({ type: 'initialize', cards })
+    }
+    onMount()
   }, []);
 
-  const add = (front: string, back: string) => {
-    dispatch({ type: 'add-card', front: front, back: back})
+  const add = async (front: string, back: string) => {
+    const resCard = await addCard(front, back)
+    dispatch({ type: 'add-card', card: resCard })
   }
 
-  const del = (id: string) => {
-    dispatch({ type: 'delete-card', id: id})
+  const del = async (card: CardItem) => {
+    await deleteCard(card)
+    dispatch({ type: 'delete-card', card })
   }
 
   return (
     <Main>
-      {error && <div>{error}</div>}
       <InputContainer>
-        <Input onChange={e => setInputFront(e.target.value)}/>
-        <Input onChange={e => setInputBack(e.target.value)}/>
-        <Button onClick={() => add(inputFront,inputBack)}>Add</Button>
+        <Input onChange={e => setInputFront(e.target.value)} />
+        <Input onChange={e => setInputBack(e.target.value)} />
+        <Button onClick={() => add(inputFront, inputBack)}>Add</Button>
       </InputContainer>
       <OverviewList>
-        {state.cards &&
-          state.cards.map((card: CardItem) => (
+        {cards &&
+          cards.map((card: CardItem) => (
             <OverviewListItem key={card.id}>
               {card.id} ({card.front} / {card.back})
               <Link to={"/cards/" + card.id}>Edit</Link>
-              <Button onClick={() => del(card.id)}>delete</Button>
+              <Button onClick={() => del(card)}>delete</Button>
             </OverviewListItem>
           ))}
       </OverviewList>
     </Main>
-  );
-};
+  )
+}
 
 
 const Main = styled.main`
