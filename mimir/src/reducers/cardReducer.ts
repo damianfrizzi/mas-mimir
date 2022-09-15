@@ -19,6 +19,8 @@ export function cardReducer(cardState: CardsState, action: Action): CardsState {
                 return card
             })
             return { ...cardState, cards: newList }
+        case 'update-game':
+            return {...cardState, game: action.game}
 
     }
 }

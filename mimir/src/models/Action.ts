@@ -1,4 +1,5 @@
 import { CardItem } from "./CardItem"
+import { Game } from "./Game"
 
 type InitializeAction = {
     type: 'initialize'
@@ -20,4 +21,9 @@ type UpdateCardAction = {
     card: CardItem
 }
 
-export type Action = AddCardAction | DeleteCardAction | InitializeAction | UpdateCardAction
+type UpdateGameAction = {
+    type: 'update-game'
+    game: Game | undefined
+}
+
+export type Action = AddCardAction | DeleteCardAction | InitializeAction | UpdateCardAction | UpdateGameAction
