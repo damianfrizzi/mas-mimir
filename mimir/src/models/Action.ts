@@ -26,4 +26,8 @@ type UpdateGameAction = {
     game: Game | undefined
 }
 
-export type Action = AddCardAction | DeleteCardAction | InitializeAction | UpdateCardAction | UpdateGameAction
+export type Action = AddCardAction | 
+DeleteCardAction | 
+InitializeAction | 
+UpdateCardAction | 
+UpdateGameAction 

@@ -1,7 +1,6 @@
-import { fetchGame } from 'api/mimir-backend';
+import { fetchGame, startGame } from 'api/mimir-backend';
 import { AppContext } from 'data/Context';
 import { useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro'
 
 export const Home = () => {
@@ -15,10 +14,16 @@ export const Home = () => {
     onMount()
   }, []);
 
+  const start = async () => {
+    const game = await startGame()
+    dispatch({ type: 'update-game', game })
+  }
+
   return (
     <Main>
       You're home!
-      {game !== undefined ? game.front : <Link to=''>Start Game</Link>}
+      <p>Progress: {game?.solved.length} / {game?.cardCount}</p>
+      {game !== undefined ? game.front : <button onClick={() => start()}>Start Game</button>}
     </Main>
   )
 }

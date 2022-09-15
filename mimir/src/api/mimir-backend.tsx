@@ -61,3 +61,15 @@ export const fetchGame = async (): Promise<Game | undefined> => {
         return await res.json()
     }  
 }
+
+export const startGame = async (): Promise<Game> => {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+    };
+    const res = await fetch(`/api/game/`, requestOptions)
+    if (!res.ok) {
+        throw new Error(`Backend HTTP error: Status ${res.status}`)
+    }
+    return await res.json()
+}
