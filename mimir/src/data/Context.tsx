@@ -5,28 +5,26 @@ import { cardReducer } from "reducers/cardReducer"
 
 interface AppState extends CardsState {
     dispatch: (action: Action) => void
-  }
-  
-  const initialState: AppState = {
+}
+
+const initialState: AppState = {
     ...initialCardsState,
-    dispatch: (action: Action) => {}
-  }
-  
-  export const AppContext = createContext(initialState)
-  
-  interface Props {
+    dispatch: (action: Action) => { }
+}
+
+export const AppContext = createContext(initialState)
+
+interface Props {
     children: ReactNode
-  }
-  
-  export const AppProvider = ({ children }: Props) => {
+}
+
+export const AppProvider = ({ children }: Props) => {
     const [state, dispatch] = useReducer(cardReducer, initialState)
-  
+
     const store = {
-      ...state,
-      dispatch
+        ...state,
+        dispatch
     }
-  
-    //console.log('render AppProvider', state.cards)
-  
+
     return <AppContext.Provider value={store}>{children}</AppContext.Provider>
-  }
+}

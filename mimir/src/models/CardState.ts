@@ -4,6 +4,6 @@ export interface CardsState {
     cards: CardItem[]
 }
 
-export const initialCardsState: CardsState =  {
+export const initialCardsState: CardsState = {
     cards: []
 } 

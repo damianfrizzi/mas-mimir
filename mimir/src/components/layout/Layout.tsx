@@ -6,7 +6,6 @@ export const Layout = () => {
         <div>
             <Navbar />
             <Outlet />
-            
         </div>
     )
 }

@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro'
 
 export const Navbar = () => {
-    const [state, setState] = useState({fancy: false})
+    const [state, setState] = useState({ fancy: false })
 
     return (
         <MyNav {...state}>
-            <NavTitle to="/" onClick={() => setState({fancy: !state.fancy})}>mimir</NavTitle>
+            <NavTitle to="/" onClick={() => setState({ fancy: !state.fancy })}>mimir</NavTitle>
             <StatusPill>New Game</StatusPill>
             <ManageLink to="/cards">Manage Cards</ManageLink>
         </MyNav>

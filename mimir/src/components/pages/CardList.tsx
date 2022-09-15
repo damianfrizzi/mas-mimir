@@ -34,8 +34,8 @@ export const CardList = () => {
   return (
     <Main>
       <InputContainer>
-        <Input onChange={e => setInputFront(e.target.value)} value={inputFront}/>
-        <Input onChange={e => setInputBack(e.target.value)} value={inputBack}/>
+        <Input onChange={e => setInputFront(e.target.value)} value={inputFront} />
+        <Input onChange={e => setInputBack(e.target.value)} value={inputBack} />
         <Button onClick={() => add(inputFront, inputBack)}>Add</Button>
       </InputContainer>
       <OverviewList>

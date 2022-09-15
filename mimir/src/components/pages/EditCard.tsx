@@ -38,6 +38,7 @@ export const EditCard = () => {
       <Input onChange={e => setInputFront(e.target.value)} value={inputFront} />
       <Input onChange={e => setInputBack(e.target.value)} value={inputBack} />
       <Link onClick={() => update()} to="/cards">update</Link>
+      <Link to="/cards">cancel</Link>
     </Main>
   )
 }

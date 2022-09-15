@@ -13,8 +13,8 @@ export function cardReducer(cardState: CardsState, action: Action): CardsState {
             return { ...cardState, cards: action.cards }
         case 'update-card':
             const newList = cardState.cards.map(card => {
-                if(card.id === action.card.id){
-                    return {...card, front: action.card.front, back: action.card.back}
+                if (card.id === action.card.id) {
+                    return { ...card, front: action.card.front, back: action.card.back }
                 }
                 return card
             })
