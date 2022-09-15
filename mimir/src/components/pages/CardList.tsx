@@ -1,4 +1,3 @@
-import { CardData } from "data/CardData";
 import { CardItem } from "models/CardItem";
 import { useEffect, useReducer, useState } from "react";
 import { Link } from "react-router-dom";

@@ -18,7 +18,7 @@ export function cardReducer(cardState: CardState, action: Action): CardState {
             if (!res.ok) {
                 throw new Error(`Backend HTTP error: Status ${res.status}`)
             }
-            const json: CardItem = await res.json()
+            //const json: CardItem = await res.json()
 
         } catch (err) {
             //setError("Something went wrong");
@@ -31,7 +31,7 @@ export function cardReducer(cardState: CardState, action: Action): CardState {
             const requestOptions = {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(cardState.cards.find(x =>  x.id == id))
+                body: JSON.stringify(cardState.cards.find(x =>  x.id === id))
             };
             const res = await fetch(`/api/cards/` +  id, requestOptions)
             if (!res.ok) {
@@ -55,7 +55,7 @@ export function cardReducer(cardState: CardState, action: Action): CardState {
             return { ...cardState }
         case 'delete-card':
             deleteCard(action.id)
-            return {...cardState, cards: cardState.cards.filter(x => x.id != action.id)}
+            return {...cardState, cards: cardState.cards.filter(x => x.id !== action.id)}
         case 'initialize':
             return {...cardState}
     }

@@ -1,4 +1,3 @@
-import { CardItem } from "./CardItem"
 
 type InitializeAction = {
     type: 'initialize'
