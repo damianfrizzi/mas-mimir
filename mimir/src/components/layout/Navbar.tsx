@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro'
 
 export const Navbar = () => {
-    const [state, setState] = useState({ fancy: false })
     const { game } = useContext(AppContext)
 
     let statusText
@@ -19,20 +18,19 @@ export const Navbar = () => {
     }
 
     return (
-        <MyNav {...state}>
-            <NavTitle to="/" onClick={() => setState({ fancy: !state.fancy })}>mimir</NavTitle>
+        <MyNav>
+            <NavTitle to="/">mimir</NavTitle>
             <StatusPill to="/">{statusText}</StatusPill>
             <ManageLink to="/cards">Manage Cards</ManageLink>
         </MyNav>
     );
 }
 
-interface NavbarProps { fancy?: Boolean }
 
-const MyNav = styled.nav<NavbarProps>`
+const MyNav = styled.nav`
     top: 0;
     width: 100%;
-    background-color: ${p => p.fancy ? 'purple' : 'darkgreen'};
+    background-color: #5B42F3;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,10 +41,11 @@ const NavTitle = styled(Link)`
     font-size: calc(10px + 2vmin);
     color: white;
     text-decoration: none;
+    width: 180px;
 `
 
 const StatusPill = styled(Link)`
-    background-color: #4CAF50;
+    background-color: #3d28c5;
     border: none;
     border-radius: 12px;
     color: white;
@@ -60,4 +59,6 @@ const ManageLink = styled(Link)`
     font-size: calc(1px + 2vmin);
     color: white;
     text-decoration: none;
+    text-align: right;
+    width: 180px;
 `
