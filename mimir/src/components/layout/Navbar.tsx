@@ -6,7 +6,7 @@ import styled from 'styled-components/macro'
 export const Navbar = () => {
     const { game } = useContext(AppContext)
 
-    let statusText
+    let statusText: string
     if(!game) {
         statusText = 'New Game'
     }

@@ -67,19 +67,19 @@ export const Home = () => {
         <h3>Progress: {percent} %</h3>
         <Button onClick={() => clear()}>Delete Game</Button>
       </FlexHorizontal>
-      <FlexHorizontal center={true}>
+      <FlexVertical>
         <Card>{game.front}</Card>
-      </FlexHorizontal>
-      <FlexHorizontal center={true}>
-        <Input onChange={e => setInput(e.target.value)} value={input} />
-        <Button onClick={() => answer()}>Submit</Button>
-      </FlexHorizontal>
+        <FlexHorizontal>
+            <Input onChange={e => setInput(e.target.value)} value={input} />
+          <Button onClick={() => answer()}>Submit</Button>
+        </FlexHorizontal>
+      </FlexVertical>
     </FlexVertical>
   )
 }
 
-interface FlexProps { 
-  center?: Boolean 
+interface FlexProps {
+  center?: Boolean
 }
 
 const FlexVertical = styled.div`
@@ -131,15 +131,21 @@ const ButtonStart = styled(Button)`
 `
 
 const Input = styled.input`
-  
+  background: 0;
+  border: 0;
+  outline: solid;
+  font-size: 1.2em;
 `
+
 const Card = styled.div`
   width: 400px;
   box-shadow: rgba(7, 41, 128, 0.5) 0 15px 30px -5px;
-  border: 1px solid black;
+  border: 2px solid #3d28c5;
   padding: 150px 0 150px;
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;;
   font-size: 50px;
-  color: '#5B42F3';
+  color: #3d28c5;
   text-align: center;
+  font-weight: bold;
 `
