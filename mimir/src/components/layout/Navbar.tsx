@@ -1,14 +1,27 @@
-import { useState } from 'react';
+import { AppContext } from 'data/Context';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro'
 
 export const Navbar = () => {
     const [state, setState] = useState({ fancy: false })
+    const { game } = useContext(AppContext)
+
+    let statusText
+    if(!game) {
+        statusText = 'New Game'
+    }
+    else if(game.solved.length < game.cardCount) {
+        statusText = 'Solve #' + (game.solved.length + 1)
+    }
+    else {
+        statusText = 'Finished'
+    }
 
     return (
         <MyNav {...state}>
             <NavTitle to="/" onClick={() => setState({ fancy: !state.fancy })}>mimir</NavTitle>
-            <StatusPill>New Game</StatusPill>
+            <StatusPill>{statusText}</StatusPill>
             <ManageLink to="/cards">Manage Cards</ManageLink>
         </MyNav>
     );
