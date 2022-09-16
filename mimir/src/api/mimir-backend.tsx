@@ -59,7 +59,7 @@ export const fetchGame = async (): Promise<Game | undefined> => {
     }
     if (res.ok) {
         return await res.json()
-    }  
+    }
 }
 
 export const startGame = async (): Promise<Game> => {
@@ -72,4 +72,29 @@ export const startGame = async (): Promise<Game> => {
         throw new Error(`Backend HTTP error: Status ${res.status}`)
     }
     return await res.json()
+}
+
+export const setAnswer = async (answer: string): Promise<Game> => {
+    const requestOptions = {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ answer: answer })
+    };
+    const res = await fetch(`/api/game/`, requestOptions)
+    if (!res.ok) {
+        throw new Error(`Backend HTTP error: Status ${res.status}`)
+    }
+    return await res.json()
+}
+
+export const clearGame = async (): Promise<Game | undefined> => {
+    const requestOptions = {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    }
+    const res = await fetch(`/api/game/`, requestOptions)
+    if (!res.ok) {
+        throw new Error(`Backend HTTP error: Status ${res.status}`)
+    }
+    return undefined
 }
