@@ -1,6 +1,5 @@
 import { fetchGame, setAnswer, startGame, clearGame} from 'api/mimir-backend';
 import { AppContext } from 'data/Context';
-import { Game } from 'models/Game';
 import { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components/macro'
 
@@ -53,7 +52,7 @@ export const Home = () => {
         Game finished!
         <p>Solved correct: {game.solved.filter(x => x.accepted === true).length} / {game.cardCount}</p>
         {game.solved.map(answer =>
-          <p>{answer.front} / {answer.back} / {answer.answer} / {answer.accepted ? 'correct' : 'wrong'}</p>
+          <p key={answer.id}>{answer.front} / {answer.back} / {answer.answer} / {answer.accepted ? 'correct' : 'wrong'}</p>
         )}
         <div><button onClick={() => reset()}>Start new Game</button></div>
       </Main>

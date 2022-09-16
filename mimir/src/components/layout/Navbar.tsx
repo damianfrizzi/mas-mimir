@@ -21,7 +21,7 @@ export const Navbar = () => {
     return (
         <MyNav {...state}>
             <NavTitle to="/" onClick={() => setState({ fancy: !state.fancy })}>mimir</NavTitle>
-            <StatusPill>{statusText}</StatusPill>
+            <StatusPill to="/">{statusText}</StatusPill>
             <ManageLink to="/cards">Manage Cards</ManageLink>
         </MyNav>
     );
@@ -45,7 +45,7 @@ const NavTitle = styled(Link)`
     text-decoration: none;
 `
 
-const StatusPill = styled.div`
+const StatusPill = styled(Link)`
     background-color: #4CAF50;
     border: none;
     border-radius: 12px;
