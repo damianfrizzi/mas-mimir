@@ -28,7 +28,7 @@ export const GameActive = () => {
             <FlexVertical>
                 <Card>{game?.front}</Card>
                 <FlexHorizontal>
-                    <Input onChange={e => setInput(e.target.value)} value={input} />
+                    <Input onChange={e => setInput(e.target.value)} placeholder='Answer' value={input} />
                     <Button onClick={() => answer()}>Submit</Button>
                 </FlexHorizontal>
             </FlexVertical>

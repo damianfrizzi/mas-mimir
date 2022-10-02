@@ -71,4 +71,7 @@ const ManageLink = styled(Link)`
     text-decoration: none;
     text-align: right;
     width: 180px;
+    &:hover {
+        color: gray;
+    }
 `
