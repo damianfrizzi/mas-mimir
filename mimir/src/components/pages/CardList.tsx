@@ -1,4 +1,5 @@
 import { fetchCards, addCard, deleteCard } from "api/mimir-backend";
+import { Button, Input } from "components/StyledComponents";
 import { AppContext } from "data/Context";
 import { CardItem } from "models/CardItem";
 import { useContext, useEffect, useState } from "react";
@@ -72,10 +73,10 @@ const InputContainer = styled.div`
   justify-content: left;
 `
 
-const Input = styled.input`
+// const Input = styled.input`
   
-`
+// `
 
-const Button = styled.button`
+// const Button = styled.button`
   
-`
+// `

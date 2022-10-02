@@ -67,7 +67,7 @@ export const ButtonStart = styled(Button)`
 
 export const Input = styled.input`
   background: 0;
-  border: solid 1px;
+  border: solid 3px lightgray;
   border-radius: 8px;
   width: 40%;
   padding: 5px 5px;
