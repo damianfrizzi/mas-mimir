@@ -1,10 +1,20 @@
+import { fetchGame } from 'api/mimir-backend';
 import { AppContext } from 'data/Context';
-import { useContext, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro'
 
 export const Navbar = () => {
-    const { game } = useContext(AppContext)
+    const { game, dispatch } = useContext(AppContext)
+    
+    useEffect(() => {
+        const onMount = async () => {
+          const game = await fetchGame()
+          dispatch({ type: 'update-game', game })
+        }
+        onMount()
+      }, []);
+
 
     let statusText: string
     if(!game) {

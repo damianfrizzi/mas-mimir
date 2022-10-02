@@ -1,19 +1,11 @@
-import { fetchGame, setAnswer, startGame, clearGame } from 'api/mimir-backend';
+import { setAnswer, startGame, clearGame } from 'api/mimir-backend';
 import { AppContext } from 'data/Context';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import styled from 'styled-components/macro'
 
 export const Home = () => {
   const [input, setInput] = useState('')
   const { game, dispatch } = useContext(AppContext)
-
-  useEffect(() => {
-    const onMount = async () => {
-      const game = await fetchGame()
-      dispatch({ type: 'update-game', game })
-    }
-    onMount()
-  }, []);
 
   const start = async () => {
     const game = await startGame()
@@ -132,9 +124,15 @@ const ButtonStart = styled(Button)`
 
 const Input = styled.input`
   background: 0;
-  border: 0;
-  outline: solid;
+  border: solid 1px;
+  border-radius: 8px;
+  width: 40%;
+  padding: 5px 5px;
+  outline: none;
   font-size: 1.2em;
+  &:focus {
+    border: solid 3px #00DDEB;
+  }
 `
 
 const Card = styled.div`
@@ -148,4 +146,5 @@ const Card = styled.div`
   color: #3d28c5;
   text-align: center;
   font-weight: bold;
+  word-wrap: break-word;
 `
