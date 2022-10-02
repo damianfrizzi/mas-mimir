@@ -6,7 +6,7 @@ export const TableHeader = styled.th`
 `
 export const TableData = styled.td`
   text-align: left;
-  padding: 8px 20px;
+  padding: 8px 30px 8px 0;
 `
 
 export const GameRecap = styled.p`

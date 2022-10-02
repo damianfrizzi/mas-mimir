@@ -1,5 +1,5 @@
 import { fetchCards, addCard, deleteCard } from "api/mimir-backend";
-import { Button, Input } from "components/StyledComponents";
+import { Button, Input, TableData } from "components/StyledComponents";
 import { AppContext } from "data/Context";
 import { CardItem } from "models/CardItem";
 import { useContext, useEffect, useState } from "react";
@@ -39,16 +39,17 @@ export const CardList = () => {
         <Input onChange={e => setInputBack(e.target.value)} placeholder='Back' value={inputBack} />
         <Button onClick={() => add(inputFront, inputBack)}>Add</Button>
       </InputContainer>
-      <OverviewList>
+      <table>
         {cards &&
           cards.map((card: CardItem) => (
-            <OverviewListItem key={card.id}>
-              {card.id} ({card.front} / {card.back})
-              <Link to={"/cards/" + card.id}>Edit</Link>
-              <Button onClick={() => del(card)}>delete</Button>
-            </OverviewListItem>
+          <tr key={card.id}>
+            <TableData>{card.front}</TableData>
+            <TableData>{card.back}</TableData>
+            <TableData><Link to={"/cards/" + card.id}>Edit</Link></TableData>
+            <TableData> <Button onClick={() => del(card)}>delete</Button></TableData>
+          </tr>
           ))}
-      </OverviewList>
+      </table>
     </Main>
   )
 }
