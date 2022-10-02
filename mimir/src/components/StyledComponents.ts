@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const TableHeader = styled.th`
   text-align: left;
-  padding: 8px 20px;
+  padding: 8px 30px 8px 0;
 `
 export const TableData = styled.td`
   text-align: left;
