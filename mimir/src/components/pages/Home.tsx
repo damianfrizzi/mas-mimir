@@ -38,21 +38,48 @@ export const Home = () => {
     )
   }
 
+  let correctSolutions = 'Solved '
+  correctSolutions += game.solved.filter(x => x.accepted === true).length.toString()
+  correctSolutions += ' out of '
+  correctSolutions += game.cardCount
+  correctSolutions += ' correctly.'
+
   if (game.cardCount === game.solved.length) {
     return (
       <FlexVertical>
-        Game finished!
-        <p>Solved correct: {game.solved.filter(x => x.accepted === true).length} / {game.cardCount}</p>
-        {game.solved.map(answer =>
-          <p key={answer.id}>{answer.front} / {answer.back} / {answer.answer} / {answer.accepted ? 'correct' : 'wrong'}</p>
-        )}
-        <div><button onClick={() => reset()}>Start new Game</button></div>
-      </FlexVertical>
+        <div><Button onClick={() => reset()}>Start new Game</Button></div>
+        <GameRecap>{correctSolutions}</GameRecap>
+        <table>
+          <tr>
+            <TableHeader>Front</TableHeader>
+            <TableHeader>Back</TableHeader>
+            <TableHeader>Your Answer</TableHeader>
+            <TableHeader>Accepted</TableHeader>
+          </tr>
+          {game.solved.map(answer =>
+            <tr key={answer.id}>
+              <TableData>
+                {answer.front}
+              </TableData>
+              <TableData>
+                {answer.back}
+              </TableData>
+              <TableData>
+                {answer.answer}
+              </TableData>
+              <TableData>
+                {answer.accepted ? <span>&#x2714;</span> : <span>&#x2718;</span>}
+              </TableData>
+            </tr>
+          )}
+        </table>
+
+      </FlexVertical >
 
     )
   }
 
-  const percent = Math.floor(100 / game.cardCount * game.solved.length)
+  const percent: number = Math.floor(100 / game.cardCount * game.solved.length)
   return (
     <FlexVertical>
       <FlexHorizontal>
@@ -62,13 +89,26 @@ export const Home = () => {
       <FlexVertical>
         <Card>{game.front}</Card>
         <FlexHorizontal>
-            <Input onChange={e => setInput(e.target.value)} value={input} />
+          <Input onChange={e => setInput(e.target.value)} value={input} />
           <Button onClick={() => answer()}>Submit</Button>
         </FlexHorizontal>
       </FlexVertical>
     </FlexVertical>
   )
 }
+
+const TableHeader = styled.th`
+  text-align: left;
+  padding: 8px 20px;
+`
+const TableData = styled.td`
+  text-align: left;
+  padding: 8px 20px;
+`
+
+const GameRecap = styled.p`
+  margin: 20px 0;
+`
 
 interface FlexProps {
   center?: Boolean
