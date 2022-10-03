@@ -1,28 +1,36 @@
 import { CardItem } from "./CardItem";
 import { Game } from "./Game";
 
+export enum ActionType {
+  INITIALIZE = "initialize",
+  ADD_CARD = "add-card",
+  DELETE_CARD = "delete-card",
+  UPDATE_CARD = "update-card",
+  UPDATE_GAME = "update-game",
+}
+
 type InitializeAction = {
-  type: "initialize";
+  type: ActionType.INITIALIZE;
   cards: CardItem[];
 };
 
 type AddCardAction = {
-  type: "add-card";
+  type: ActionType.ADD_CARD;
   card: CardItem;
 };
 
 type DeleteCardAction = {
-  type: "delete-card";
+  type: ActionType.DELETE_CARD;
   card: CardItem;
 };
 
 type UpdateCardAction = {
-  type: "update-card";
+  type: ActionType.UPDATE_CARD;
   card: CardItem;
 };
 
 type UpdateGameAction = {
-  type: "update-game";
+  type: ActionType.UPDATE_GAME;
   game: Game | undefined;
 };
 

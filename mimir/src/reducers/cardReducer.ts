@@ -1,19 +1,19 @@
-import { Action } from "models/Action";
+import { Action, ActionType } from "models/Action";
 import { CardsState } from "models/CardState";
 
 export function cardReducer(cardState: CardsState, action: Action): CardsState {
   switch (action.type) {
-    case "add-card":
+    case ActionType.ADD_CARD:
       cardState.cards.push(action.card);
       return { ...cardState };
-    case "delete-card":
+    case ActionType.DELETE_CARD:
       return {
         ...cardState,
         cards: cardState.cards.filter((x) => x !== action.card),
       };
-    case "initialize":
+    case ActionType.INITIALIZE:
       return { ...cardState, cards: action.cards };
-    case "update-card":
+    case ActionType.UPDATE_CARD:
       const newList = cardState.cards.map((card) => {
         if (card.id === action.card.id) {
           return { ...card, front: action.card.front, back: action.card.back };
@@ -21,7 +21,7 @@ export function cardReducer(cardState: CardsState, action: Action): CardsState {
         return card;
       });
       return { ...cardState, cards: newList };
-    case "update-game":
+    case ActionType.UPDATE_GAME:
       return { ...cardState, game: action.game };
   }
 }

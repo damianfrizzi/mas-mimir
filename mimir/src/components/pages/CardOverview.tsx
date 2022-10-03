@@ -1,5 +1,6 @@
 import { fetchCards } from "api/mimir-backend";
 import { AppContext } from "data/Context";
+import { ActionType } from "models/Action";
 import { useContext, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components/macro";
@@ -10,7 +11,7 @@ export const CardOverview = () => {
   useEffect(() => {
     const onMount = async () => {
       const cards = await fetchCards();
-      dispatch({ type: "initialize", cards });
+      dispatch({ type: ActionType.INITIALIZE, cards });
     };
     onMount();
   }, [dispatch]);

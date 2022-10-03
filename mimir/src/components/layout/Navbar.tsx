@@ -1,5 +1,6 @@
 import { fetchGame } from "api/mimir-backend";
 import { AppContext } from "data/Context";
+import { ActionType } from "models/Action";
 import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
@@ -10,7 +11,7 @@ export const Navbar = () => {
   useEffect(() => {
     const onMount = async () => {
       const game = await fetchGame();
-      dispatch({ type: "update-game", game });
+      dispatch({ type: ActionType.UPDATE_GAME, game });
     };
     onMount();
   }, [dispatch]);

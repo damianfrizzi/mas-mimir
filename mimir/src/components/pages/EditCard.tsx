@@ -5,6 +5,7 @@ import {
   NarrowLinkButton,
 } from "components/StyledComponents";
 import { AppContext } from "data/Context";
+import { ActionType } from "models/Action";
 import { CardItem } from "models/CardItem";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -34,7 +35,7 @@ export const EditCard = () => {
       back: inputBack,
     };
     const card = await updateCard(updatedCard);
-    dispatch({ type: "update-card", card });
+    dispatch({ type: ActionType.UPDATE_CARD, card });
   };
 
   return (

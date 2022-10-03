@@ -6,6 +6,7 @@ import {
   TableHeader,
 } from "components/StyledComponents";
 import { AppContext } from "data/Context";
+import { ActionType } from "models/Action";
 import { useContext } from "react";
 import styled from "styled-components";
 
@@ -15,7 +16,7 @@ export const GameFinished = () => {
   const reset = async () => {
     await clearGame();
     const game = await startGame();
-    dispatch({ type: "update-game", game });
+    dispatch({ type: ActionType.UPDATE_GAME, game });
   };
 
   let correctSolutions = "Solved ";

@@ -6,6 +6,7 @@ import {
   Input,
 } from "components/StyledComponents";
 import { AppContext } from "data/Context";
+import { ActionType } from "models/Action";
 import { useContext, useState } from "react";
 import styled from "styled-components";
 
@@ -15,13 +16,13 @@ export const GameActive = () => {
 
   const answer = async () => {
     const game = await setAnswer(input);
-    dispatch({ type: "update-game", game });
+    dispatch({ type: ActionType.UPDATE_GAME, game });
     setInput("");
   };
 
   const clear = async () => {
     const game = await clearGame();
-    dispatch({ type: "update-game", game });
+    dispatch({ type: ActionType.UPDATE_GAME, game });
   };
 
   const percent: number | undefined =
