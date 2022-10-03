@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom"
 import styled, { css } from "styled-components"
 
-export const TableHeader = styled.th`
+const TableContent = css`
   text-align: left;
   padding: 8px 30px 8px 0;
 `
+
+export const TableHeader = styled.th`
+  ${TableContent}
+`
+
 export const TableData = styled.td`
-  text-align: left;
-  padding: 8px 30px 8px 0;
+  ${TableContent}
 `
 
 export interface FlexProps {
@@ -64,6 +68,14 @@ export const Button = styled.button`
 
 export const LinkButton = styled(Link)`
   ${FancyButton}
+`
+
+export const NarrowLinkButton = styled(LinkButton)`
+  min-width: 70px;
+`
+
+export const NarrowButton = styled(Button)`
+  min-width: 70px;
 `
 
 export const Input = styled.input`

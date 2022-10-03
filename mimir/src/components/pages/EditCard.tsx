@@ -1,9 +1,9 @@
 import { updateCard } from 'api/mimir-backend'
-import { FlexHorizontal, Input, LinkButton } from 'components/StyledComponents'
+import { FlexHorizontal, Input, NarrowLinkButton } from 'components/StyledComponents'
 import { AppContext } from 'data/Context'
 import { CardItem } from 'models/CardItem'
 import { useContext, useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
 export const EditCard = () => {
@@ -38,8 +38,8 @@ export const EditCard = () => {
       <FlexHorizontal>
         <Input onChange={e => setInputFront(e.target.value)} placeholder='Front' value={inputFront} />
         <Input onChange={e => setInputBack(e.target.value)} placeholder='Back' value={inputBack} />
-        <NarrowButton onClick={() => update()} to="/cards">update</NarrowButton>
-        <NarrowButton to="/cards">cancel</NarrowButton>
+        <NarrowLinkButton onClick={() => update()} to="/cards">update</NarrowLinkButton>
+        <NarrowLinkButton to="/cards">cancel</NarrowLinkButton>
       </FlexHorizontal>
     </Main>
   )
