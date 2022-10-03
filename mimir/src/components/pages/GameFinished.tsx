@@ -12,6 +12,7 @@ import styled from "styled-components";
 
 export const GameFinished = () => {
   const { game, dispatch } = useContext(AppContext);
+  const correctlySolved = game?.solved.filter((x) => x.accepted).length;
 
   const reset = async () => {
     await clearGame();
@@ -19,20 +20,14 @@ export const GameFinished = () => {
     dispatch({ type: ActionType.UPDATE_GAME, game });
   };
 
-  let correctSolutions = "Solved ";
-  correctSolutions += game?.solved
-    .filter((x) => x.accepted === true)
-    .length.toString();
-  correctSolutions += " out of ";
-  correctSolutions += game?.cardCount;
-  correctSolutions += " correctly.";
-
   return (
     <FlexVertical>
       <div>
         <Button onClick={() => reset()}>Start new Game</Button>
       </div>
-      <GameRecap>{correctSolutions}</GameRecap>
+      <GameRecap>
+        Solved {correctlySolved} out of {game?.cardCount} correctly.
+      </GameRecap>
       <table>
         <thead>
           <tr>
