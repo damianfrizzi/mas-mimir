@@ -29,7 +29,7 @@ export const GameActive = () => {
             <FlexVertical>
                 <Card>{game?.front}</Card>
                 <FlexHorizontal>
-                    <Input onChange={e => setInput(e.target.value)} placeholder='Answer' value={input} />
+                    <AnswerInput onChange={e => setInput(e.target.value)} placeholder='Answer' value={input} />
                     <Button onClick={() => answer()}>Submit</Button>
                 </FlexHorizontal>
             </FlexVertical>
@@ -49,4 +49,8 @@ const Card = styled.div`
   text-align: center;
   font-weight: bold;
   word-wrap: break-word;
+`
+
+const AnswerInput = styled(Input)`
+    width: 60%;
 `
