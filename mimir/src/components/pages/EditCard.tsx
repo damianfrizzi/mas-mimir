@@ -1,5 +1,5 @@
 import { updateCard } from 'api/mimir-backend'
-import { Input, LinkButton } from 'components/StyledComponents'
+import { FlexHorizontal, Input, LinkButton } from 'components/StyledComponents'
 import { AppContext } from 'data/Context'
 import { CardItem } from 'models/CardItem'
 import { useContext, useEffect, useState } from 'react'
@@ -35,10 +35,12 @@ export const EditCard = () => {
 
   return (
     <Main>
-      <Input onChange={e => setInputFront(e.target.value)} placeholder='Front' value={inputFront} />
-      <Input onChange={e => setInputBack(e.target.value)} placeholder='Back' value={inputBack} />
-      <LinkButton onClick={() => update()} to="/cards">update</LinkButton>
-      <LinkButton to="/cards">cancel</LinkButton>
+      <FlexHorizontal>
+        <Input onChange={e => setInputFront(e.target.value)} placeholder='Front' value={inputFront} />
+        <Input onChange={e => setInputBack(e.target.value)} placeholder='Back' value={inputBack} />
+        <NarrowButton onClick={() => update()} to="/cards">update</NarrowButton>
+        <NarrowButton to="/cards">cancel</NarrowButton>
+      </FlexHorizontal>
     </Main>
   )
 }
@@ -47,10 +49,4 @@ const Main = styled.main`
   margin: 10px;
 `
 
-// const Input = styled.input`
-  
-// `
 
-const Button = styled.button`
-  
-`
