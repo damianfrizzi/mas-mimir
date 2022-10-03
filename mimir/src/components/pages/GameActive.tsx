@@ -1,7 +1,8 @@
 import { clearGame, setAnswer } from "api/mimir-backend"
-import { Button, Card, FlexHorizontal, FlexVertical, Input } from "components/StyledComponents"
+import { Button, FlexHorizontal, FlexVertical, Input } from "components/StyledComponents"
 import { AppContext } from "data/Context"
 import { useContext, useState } from "react"
+import styled from "styled-components"
 
 export const GameActive = () => {
     const [input, setInput] = useState('')
@@ -35,3 +36,17 @@ export const GameActive = () => {
         </FlexVertical>
     )
 }
+
+const Card = styled.div`
+  width: 400px;
+  box-shadow: rgba(7, 41, 128, 0.5) 0 15px 30px -5px;
+  border: 2px solid #3d28c5;
+  padding: 150px 0 150px;
+  margin-top: 20px;
+  margin-bottom: 20px;;
+  font-size: 50px;
+  color: #3d28c5;
+  text-align: center;
+  font-weight: bold;
+  word-wrap: break-word;
+`

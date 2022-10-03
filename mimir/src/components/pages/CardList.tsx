@@ -1,8 +1,8 @@
-import { fetchCards, addCard, deleteCard } from "api/mimir-backend";
+import { addCard, deleteCard } from "api/mimir-backend";
 import { Button, Input, TableData } from "components/StyledComponents";
 import { AppContext } from "data/Context";
 import { CardItem } from "models/CardItem";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 
@@ -49,16 +49,6 @@ export const CardList = () => {
 
 const Main = styled.main`
   margin: 10px;
-`;
-
-const OverviewList = styled.ul`
-  list-style: none;
-  margin: 10px;
-  padding: 0px;
-`;
-
-const OverviewListItem = styled.li`
-  margin: 3px;
 `;
 
 const InputContainer = styled.div`

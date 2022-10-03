@@ -1,7 +1,8 @@
 import { startGame } from "api/mimir-backend"
-import { ButtonStart, FlexVertical } from "components/StyledComponents"
+import { Button, FlexVertical } from "components/StyledComponents"
 import { AppContext } from "data/Context"
 import { useContext } from "react"
+import styled from "styled-components"
 
 export const GameIdle = () => {
     const { dispatch } = useContext(AppContext)
@@ -17,3 +18,7 @@ export const GameIdle = () => {
     )
 
 }
+
+const ButtonStart = styled(Button)`
+  margin: 25px;
+`

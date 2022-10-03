@@ -9,10 +9,6 @@ export const TableData = styled.td`
   padding: 8px 30px 8px 0;
 `
 
-export const GameRecap = styled.p`
-  margin: 20px 0;
-`
-
 export interface FlexProps {
   center?: Boolean
 }
@@ -61,10 +57,6 @@ export const Button = styled.button`
   }
 `
 
-export const ButtonStart = styled(Button)`
-  margin: 25px;
-`
-
 export const Input = styled.input`
   background: 0;
   border: solid 3px lightgray;
@@ -76,18 +68,4 @@ export const Input = styled.input`
   &:focus {
     border: solid 3px #00DDEB;
   }
-`
-
-export const Card = styled.div`
-  width: 400px;
-  box-shadow: rgba(7, 41, 128, 0.5) 0 15px 30px -5px;
-  border: 2px solid #3d28c5;
-  padding: 150px 0 150px;
-  margin-top: 20px;
-  margin-bottom: 20px;;
-  font-size: 50px;
-  color: #3d28c5;
-  text-align: center;
-  font-weight: bold;
-  word-wrap: break-word;
 `

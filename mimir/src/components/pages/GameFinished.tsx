@@ -1,7 +1,8 @@
 import { clearGame, startGame } from "api/mimir-backend"
-import { Button, FlexVertical, GameRecap, TableData, TableHeader } from "components/StyledComponents"
+import { Button, FlexVertical, TableData, TableHeader } from "components/StyledComponents"
 import { AppContext } from "data/Context"
 import { useContext } from "react"
+import styled from "styled-components"
 
 export const GameFinished = () => {
     const { game, dispatch } = useContext(AppContext)
@@ -43,3 +44,7 @@ export const GameFinished = () => {
         </FlexVertical >
     )
 }
+
+const GameRecap = styled.p`
+  margin: 20px 0;
+`
