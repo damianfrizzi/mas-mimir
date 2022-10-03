@@ -24,22 +24,26 @@ export const GameFinished = () => {
             <div><Button onClick={() => reset()}>Start new Game</Button></div>
             <GameRecap>{correctSolutions}</GameRecap>
             <table>
-                <tr>
-                    <TableHeader>Front</TableHeader>
-                    <TableHeader>Back</TableHeader>
-                    <TableHeader>Your Answer</TableHeader>
-                    <TableHeader>Accepted</TableHeader>
-                </tr>
-                {game?.solved.map(answer =>
-                    <tr key={answer.id}>
-                        <TableData>{answer.front}</TableData>
-                        <TableData>{answer.back}</TableData>
-                        <TableData>{answer.answer}</TableData>
-                        <TableData>
-                            {answer.accepted ? <span>&#x2714;</span> : <span>&#x2718;</span>}
-                        </TableData>
+                <thead>
+                    <tr>
+                        <TableHeader>Front</TableHeader>
+                        <TableHeader>Back</TableHeader>
+                        <TableHeader>Your Answer</TableHeader>
+                        <TableHeader>Accepted</TableHeader>
                     </tr>
-                )}
+                </thead>
+                <tbody>
+                    {game?.solved.map(answer =>
+                        <tr key={answer.id}>
+                            <TableData>{answer.front}</TableData>
+                            <TableData>{answer.back}</TableData>
+                            <TableData>{answer.answer}</TableData>
+                            <TableData>
+                                {answer.accepted ? <span>&#x2714;</span> : <span>&#x2718;</span>}
+                            </TableData>
+                        </tr>
+                    )}
+                </tbody>
             </table>
         </FlexVertical >
     )

@@ -32,15 +32,17 @@ export const CardList = () => {
         <Button onClick={() => add(inputFront, inputBack)}>Add</Button>
       </InputContainer>
       <table>
+        <tbody>
         {cards &&
           cards.map((card: CardItem) => (
-          <tr key={card.id}>
-            <TableData>{card.front}</TableData>
-            <TableData>{card.back}</TableData>
-            <TableData><NarrowLinkButton to={"/cards/" + card.id}>Edit</NarrowLinkButton></TableData>
-            <TableData> <NarrowButton onClick={() => del(card)}>delete</NarrowButton></TableData>
-          </tr>
+            <tr key={card.id}>
+              <TableData>{card.front}</TableData>
+              <TableData>{card.back}</TableData>
+              <TableData><NarrowLinkButton to={"/cards/" + card.id}>Edit</NarrowLinkButton></TableData>
+              <TableData> <NarrowButton onClick={() => del(card)}>delete</NarrowButton></TableData>
+            </tr>
           ))}
+          </tbody>
       </table>
     </Main>
   )
