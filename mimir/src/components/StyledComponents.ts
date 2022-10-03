@@ -1,21 +1,21 @@
-import { Link } from "react-router-dom"
-import styled, { css } from "styled-components"
+import { Link } from "react-router-dom";
+import styled, { css } from "styled-components";
 
 const TableContent = css`
   text-align: left;
   padding: 8px 30px 8px 0;
-`
+`;
 
 export const TableHeader = styled.th`
   ${TableContent}
-`
+`;
 
 export const TableData = styled.td`
   ${TableContent}
-`
+`;
 
 export interface FlexProps {
-    center?: Boolean
+  center?: Boolean;
 }
 
 export const FlexVertical = styled.div`
@@ -25,24 +25,24 @@ export const FlexVertical = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-`
+`;
 
 export const FlexHorizontal = styled.div<FlexProps>`
   top: 0;
   width: 100%;
   margin: 5px;
   display: flex;
-  justify-content: ${p => p.center ? 'center' : 'space-between'};
+  justify-content: ${(p) => (p.center ? "center" : "space-between")};
   align-items: center;
-`
+`;
 
 const FancyButton = css`
-  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
   border: 0;
   border-radius: 8px;
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   display: flex;
   font-size: 15px;
   justify-content: center;
@@ -60,23 +60,23 @@ const FancyButton = css`
     outline: 0;
     opacity: 0.85;
   }
-`
+`;
 
 export const Button = styled.button`
   ${FancyButton}
-`
+`;
 
 export const LinkButton = styled(Link)`
   ${FancyButton}
-`
+`;
 
 export const NarrowLinkButton = styled(LinkButton)`
   min-width: 70px;
-`
+`;
 
 export const NarrowButton = styled(Button)`
   min-width: 70px;
-`
+`;
 
 export const Input = styled.input`
   background: 0;
@@ -87,6 +87,6 @@ export const Input = styled.input`
   outline: none;
   font-size: 1.2em;
   &:focus {
-    border: solid 3px #00DDEB;
+    border: solid 3px #00ddeb;
   }
-`
+`;

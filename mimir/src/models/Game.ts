@@ -1,7 +1,7 @@
-import { CardItemAnswer } from "./CardItem"
+import { CardItemAnswer } from "./CardItem";
 
 export type Game = {
-    front: string
-    cardCount: number
-    solved: CardItemAnswer[]
-}
+  front: string;
+  cardCount: number;
+  solved: CardItemAnswer[];
+};

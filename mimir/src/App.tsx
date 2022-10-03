@@ -1,10 +1,9 @@
-import { Routes, Route } from 'react-router-dom'
-import { Home } from "components/pages/Home"
-import { Layout } from 'components/layout/Layout';
+import { Routes, Route } from "react-router-dom";
+import { Home } from "components/pages/Home";
+import { Layout } from "components/layout/Layout";
 import { CardOverview } from "components/pages/CardOverview";
 import { CardList } from "components/pages/CardList";
 import { EditCard } from "components/pages/EditCard";
-
 
 export default function App() {
   return (
@@ -19,5 +18,5 @@ export default function App() {
         </Route>
       </Routes>
     </>
-  )
+  );
 }
