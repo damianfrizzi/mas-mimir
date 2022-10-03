@@ -12,14 +12,6 @@ export const CardList = () => {
   const [inputBack, setInputBack] = useState('')
   const { cards, dispatch } = useContext(AppContext)
 
-  useEffect(() => {
-    const onMount = async () => {
-      const cards = await fetchCards()
-      dispatch({ type: 'initialize', cards })
-    }
-    onMount()
-  }, []);
-
   const add = async (front: string, back: string) => {
     const resCard = await addCard(front, back)
     dispatch({ type: 'add-card', card: resCard })
