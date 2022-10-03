@@ -1,5 +1,5 @@
 import { addCard, deleteCard } from "api/mimir-backend";
-import { Button, Input, TableData } from "components/StyledComponents";
+import { Button, Input, LinkButton, TableData } from "components/StyledComponents";
 import { AppContext } from "data/Context";
 import { CardItem } from "models/CardItem";
 import { useContext, useState } from "react";
@@ -37,7 +37,7 @@ export const CardList = () => {
           <tr key={card.id}>
             <TableData>{card.front}</TableData>
             <TableData>{card.back}</TableData>
-            <TableData><Link to={"/cards/" + card.id}>Edit</Link></TableData>
+            <TableData><LinkButton to={"/cards/" + card.id}>Edit</LinkButton></TableData>
             <TableData> <Button onClick={() => del(card)}>delete</Button></TableData>
           </tr>
           ))}

@@ -1,5 +1,5 @@
 import { updateCard } from 'api/mimir-backend'
-import { Input } from 'components/StyledComponents'
+import { Input, LinkButton } from 'components/StyledComponents'
 import { AppContext } from 'data/Context'
 import { CardItem } from 'models/CardItem'
 import { useContext, useEffect, useState } from 'react'
@@ -37,8 +37,8 @@ export const EditCard = () => {
     <Main>
       <Input onChange={e => setInputFront(e.target.value)} placeholder='Front' value={inputFront} />
       <Input onChange={e => setInputBack(e.target.value)} placeholder='Back' value={inputBack} />
-      <Link onClick={() => update()} to="/cards">update</Link>
-      <Link to="/cards">cancel</Link>
+      <LinkButton onClick={() => update()} to="/cards">update</LinkButton>
+      <LinkButton to="/cards">cancel</LinkButton>
     </Main>
   )
 }

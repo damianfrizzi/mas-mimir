@@ -1,4 +1,5 @@
-import styled from "styled-components"
+import { Link } from "react-router-dom"
+import styled, { css } from "styled-components"
 
 export const TableHeader = styled.th`
   text-align: left;
@@ -10,7 +11,7 @@ export const TableData = styled.td`
 `
 
 export interface FlexProps {
-  center?: Boolean
+    center?: Boolean
 }
 
 export const FlexVertical = styled.div`
@@ -31,7 +32,7 @@ export const FlexHorizontal = styled.div<FlexProps>`
   align-items: center;
 `
 
-export const Button = styled.button`
+const FancyButton = css`
   background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
   border: 0;
   border-radius: 8px;
@@ -55,6 +56,14 @@ export const Button = styled.button`
     outline: 0;
     opacity: 0.85;
   }
+`
+
+export const Button = styled.button`
+  ${FancyButton}
+`
+
+export const LinkButton = styled(Link)`
+  ${FancyButton}
 `
 
 export const Input = styled.input`
