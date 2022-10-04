@@ -43,13 +43,13 @@ export const GameFinished = () => {
               <TableData>{answer.front}</TableData>
               <TableData>{answer.back}</TableData>
               <TableData>{answer.answer}</TableData>
-              <TableData>
+              <AcceptedTableData accepted={answer.accepted}>
                 {answer.accepted ? (
                   <span>&#x2714;</span>
                 ) : (
                   <span>&#x2718;</span>
                 )}
-              </TableData>
+              </AcceptedTableData>
             </tr>
           ))}
         </tbody>
@@ -60,4 +60,12 @@ export const GameFinished = () => {
 
 const GameRecap = styled.p`
   margin: 20px 0;
+`;
+
+interface AcceptedProps {
+    accepted: boolean;
+}
+
+const AcceptedTableData = styled(TableData)<AcceptedProps>`
+    color: ${p => p.accepted ? '#16bd13' : '#EB3307'}
 `;
