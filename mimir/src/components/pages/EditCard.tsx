@@ -40,7 +40,7 @@ export const EditCard = () => {
 
   return (
     <Main>
-      <FlexHorizontal>
+      <FlexHorizontal center={true}>
         <Input
           onChange={(e) => setInputFront(e.target.value)}
           placeholder="Front"

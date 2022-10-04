@@ -1,6 +1,7 @@
 import { addCard, deleteCard } from "api/mimir-backend";
 import {
   Button,
+  FlexHorizontal,
   Input,
   NarrowButton,
   NarrowLinkButton,
@@ -30,8 +31,8 @@ export const CardList = () => {
   };
 
   return (
-    <Main>
-      <InputContainer>
+    <>
+      <FlexHorizontal center={true}>
         <Input
           onChange={(e) => setInputFront(e.target.value)}
           placeholder="Front"
@@ -43,27 +44,29 @@ export const CardList = () => {
           value={inputBack}
         />
         <Button onClick={() => add(inputFront, inputBack)}>Add</Button>
-      </InputContainer>
-      <table>
-        <tbody>
-          {cards &&
-            cards.map((card: CardItem) => (
-              <tr key={card.id}>
-                <TableData>{card.front}</TableData>
-                <TableData>{card.back}</TableData>
-                <TableData>
-                  <NarrowLinkButton to={"/cards/" + card.id}>
-                    Edit
-                  </NarrowLinkButton>
-                </TableData>
-                <TableData>
-                  <NarrowButton onClick={() => del(card)}>Delete</NarrowButton>
-                </TableData>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-    </Main>
+      </FlexHorizontal>
+      <FlexHorizontal center={true}>
+        <table>
+          <tbody>
+            {cards &&
+              cards.map((card: CardItem) => (
+                <tr key={card.id}>
+                  <TableData>{card.front}</TableData>
+                  <TableData>{card.back}</TableData>
+                  <ButtonTableData>
+                    <NarrowLinkButton to={"/cards/" + card.id}>
+                      Edit
+                    </NarrowLinkButton>
+                  </ButtonTableData>
+                  <ButtonTableData>
+                    <NarrowButton onClick={() => del(card)}>Delete</NarrowButton>
+                  </ButtonTableData>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </FlexHorizontal>
+    </>
   );
 };
 
@@ -71,7 +74,11 @@ const Main = styled.main`
   margin: 10px;
 `;
 
-const InputContainer = styled.div`
-  display: flex;
-  justify-content: left;
+const InputContainer = styled(FlexHorizontal)`
+  justify-content: center;
+  max-width: 700px;
+`;
+
+const ButtonTableData = styled(TableData)`
+  padding-right: 0;
 `;

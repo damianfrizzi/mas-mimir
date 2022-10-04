@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 
 const TableContent = css`
   text-align: left;
-  padding: 8px 30px 8px 0;
+  padding: 8px 40px 8px 0;
 `;
 
 export const TableHeader = styled.th`
@@ -72,10 +72,12 @@ export const LinkButton = styled(Link)`
 
 export const NarrowLinkButton = styled(LinkButton)`
   min-width: 70px;
+  padding: 6px 15px;
 `;
 
 export const NarrowButton = styled(Button)`
   min-width: 70px;
+  padding: 6px 15px;
 `;
 
 export const Input = styled.input`
