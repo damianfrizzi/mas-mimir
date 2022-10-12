@@ -15,14 +15,14 @@ paths:
         - Master Data
       summary: List all cards
       responses:
-        '200':
+        "200":
           description: listing cards
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Card'
+                  $ref: "#/components/schemas/Card"
 
     post:
       tags:
@@ -32,15 +32,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Card'
+              $ref: "#/components/schemas/Card"
         required: true
       responses:
-        '200':
+        "200":
           description: card added
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Card'
+                $ref: "#/components/schemas/Card"
 
   /cards/{id}:
     put:
@@ -58,15 +58,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Card'
+              $ref: "#/components/schemas/Card"
         required: true
       responses:
-        '200':
+        "200":
           description: card updated
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Card'
+                $ref: "#/components/schemas/Card"
 
     delete:
       tags:
@@ -83,10 +83,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Card'
+              $ref: "#/components/schemas/Card"
         required: true
       responses:
-        '204':
+        "204":
           description: card deleted
 
   /game:
@@ -95,13 +95,13 @@ paths:
         - Game Loop
       summary: Get current game
       responses:
-        '200':
+        "200":
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Game'
-        '404':
+                $ref: "#/components/schemas/Game"
+        "404":
           description: game not found
 
     post:
@@ -109,13 +109,13 @@ paths:
         - Game Loop
       summary: Start a new game
       responses:
-        '200':
+        "200":
           description: game started
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Game'
-        '409':
+                $ref: "#/components/schemas/Game"
+        "409":
           description: game already started
 
     patch:
@@ -126,17 +126,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Answer'
+              $ref: "#/components/schemas/Answer"
       responses:
-        '200':
+        "200":
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Game'
-        '400':
+                $ref: "#/components/schemas/Game"
+        "400":
           description: no cards left
-        '404':
+        "404":
           description: game not found
 
     delete:
@@ -144,9 +144,9 @@ paths:
         - Game Loop
       summary: Delete current game
       responses:
-        '204':
+        "204":
           description: deleted
-        '404':
+        "404":
           description: game not found
 
 components:
@@ -185,7 +185,7 @@ components:
         solved:
           type: array
           items:
-            $ref: '#/components/schemas/GameCard'
+            $ref: "#/components/schemas/GameCard"
 
     Answer:
       type: object

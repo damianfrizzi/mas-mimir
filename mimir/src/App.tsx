@@ -1,26 +1,20 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import { Home } from "components/pages/Home";
+import { Layout } from "components/layout/Layout";
+import { CardOverview } from "components/pages/CardOverview";
+import { CardList } from "components/pages/CardList";
+import { EditCard } from "components/pages/EditCard";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="cards" element={<CardOverview />}>
+          <Route index element={<CardList />} />
+          <Route path=":id" element={<EditCard />} />
+        </Route>
+      </Route>
+    </Routes>
   );
 }
-
-export default App;
