@@ -14,28 +14,6 @@ export const TableData = styled.td`
   ${TableContent}
 `;
 
-export interface FlexProps {
-  center?: Boolean;
-}
-
-export const FlexVertical = styled.div`
-  top: 0;
-  margin: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-
-export const FlexHorizontal = styled.div<FlexProps>`
-  top: 0;
-  width: 100%;
-  margin: 5px;
-  display: flex;
-  justify-content: ${(p) => (p.center ? "center" : "space-between")};
-  align-items: center;
-`;
-
 const FancyButton = css`
   background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
   border: 0;

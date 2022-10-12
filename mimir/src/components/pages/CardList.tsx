@@ -1,7 +1,6 @@
 import { addCard, deleteCard } from "api/mimir-backend";
 import {
   Button,
-  FlexHorizontal,
   Input,
   NarrowButton,
   NarrowLinkButton,
@@ -31,8 +30,8 @@ export const CardList = () => {
   };
 
   return (
-    <>
-      <FlexHorizontal center={true}>
+    <Container>
+      <InputContainer>
         <Input
           onChange={(e) => setInputFront(e.target.value)}
           placeholder="Front"
@@ -44,41 +43,53 @@ export const CardList = () => {
           value={inputBack}
         />
         <Button onClick={() => add(inputFront, inputBack)}>Add</Button>
-      </FlexHorizontal>
-      <FlexHorizontal center={true}>
-        <table>
-          <tbody>
-            {cards &&
-              cards.map((card: CardItem) => (
-                <tr key={card.id}>
-                  <TableData>{card.front}</TableData>
-                  <TableData>{card.back}</TableData>
-                  <ButtonTableData>
-                    <NarrowLinkButton to={"/cards/" + card.id}>
-                      Edit
-                    </NarrowLinkButton>
-                  </ButtonTableData>
-                  <ButtonTableData>
-                    <NarrowButton onClick={() => del(card)}>Delete</NarrowButton>
-                  </ButtonTableData>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      </FlexHorizontal>
-    </>
+      </InputContainer>
+      <Table>
+        <tbody>
+          {cards &&
+            cards.map((card: CardItem) => (
+              <TableRow key={card.id}>
+                <TableData>{card.front}</TableData>
+                <TableData>{card.back}</TableData>
+                <ActionsTableData>
+                  <NarrowLinkButton to={"/cards/" + card.id}>
+                    Edit
+                  </NarrowLinkButton>
+
+                  <NarrowButton onClick={() => del(card)}>Delete</NarrowButton>
+                </ActionsTableData>
+              </TableRow>
+            ))}
+        </tbody>
+      </Table>
+    </Container>
   );
 };
 
-const Main = styled.main`
-  margin: 10px;
-`;
-
-const InputContainer = styled(FlexHorizontal)`
-  justify-content: center;
+const Container = styled.div`
+  margin: 25px auto;
+  width: 100%;
   max-width: 700px;
 `;
 
-const ButtonTableData = styled(TableData)`
+const InputContainer = styled.div`
+  display: flex;
+  gap: 15px;
+`;
+
+const Table = styled.table`
+  margin-top: 25px;
+  width: 100%;
+  border-collapse: collapse;
+`;
+
+const TableRow = styled.tr`
+  border-bottom: #efefef 1px solid;
+`;
+
+const ActionsTableData = styled(TableData)`
+  display: flex;
+  justify-content: end;
+  gap: 15px;
   padding-right: 0;
 `;

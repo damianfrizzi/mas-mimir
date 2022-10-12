@@ -1,9 +1,5 @@
 import { updateCard } from "api/mimir-backend";
-import {
-  FlexHorizontal,
-  Input,
-  NarrowLinkButton,
-} from "components/StyledComponents";
+import { Input, LinkButton } from "components/StyledComponents";
 import { AppContext } from "data/Context";
 import { ActionType } from "models/Action";
 import { CardItem } from "models/CardItem";
@@ -39,27 +35,29 @@ export const EditCard = () => {
   };
 
   return (
-    <Main>
-      <FlexHorizontal center={true}>
-        <Input
-          onChange={(e) => setInputFront(e.target.value)}
-          placeholder="Front"
-          value={inputFront}
-        />
-        <Input
-          onChange={(e) => setInputBack(e.target.value)}
-          placeholder="Back"
-          value={inputBack}
-        />
-        <NarrowLinkButton onClick={update} to="/cards">
-          Update
-        </NarrowLinkButton>
-        <NarrowLinkButton to="/cards">Cancel</NarrowLinkButton>
-      </FlexHorizontal>
-    </Main>
+    <Container>
+      <Input
+        onChange={(e) => setInputFront(e.target.value)}
+        placeholder="Front"
+        value={inputFront}
+      />
+      <Input
+        onChange={(e) => setInputBack(e.target.value)}
+        placeholder="Back"
+        value={inputBack}
+      />
+      <LinkButton onClick={update} to="/cards">
+        Update
+      </LinkButton>
+    </Container>
   );
 };
 
-const Main = styled.main`
-  margin: 10px;
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 25px auto;
+  width: 100%;
+  max-width: 700px;
 `;

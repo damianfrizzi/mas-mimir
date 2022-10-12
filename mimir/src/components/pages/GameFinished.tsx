@@ -1,10 +1,5 @@
 import { clearGame, startGame } from "api/mimir-backend";
-import {
-  Button,
-  FlexVertical,
-  TableData,
-  TableHeader,
-} from "components/StyledComponents";
+import { Button, TableData, TableHeader } from "components/StyledComponents";
 import { AppContext } from "data/Context";
 import { ActionType } from "models/Action";
 import { useContext } from "react";
@@ -21,9 +16,9 @@ export const GameFinished = () => {
   };
 
   return (
-    <FlexVertical>
+    <Container>
       <div>
-        <Button onClick={() => reset()}>Start new Game</Button>
+        <Button onClick={() => reset()}>Start New Game</Button>
       </div>
       <GameRecap>
         Solved {correctlySolved} out of {game?.cardCount} correctly.
@@ -54,18 +49,27 @@ export const GameFinished = () => {
           ))}
         </tbody>
       </table>
-    </FlexVertical>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  margin: 40px;
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
 
 const GameRecap = styled.p`
   margin: 20px 0;
 `;
 
 interface AcceptedProps {
-    accepted: boolean;
+  accepted: boolean;
 }
 
 const AcceptedTableData = styled(TableData)<AcceptedProps>`
-    color: ${p => p.accepted ? '#16bd13' : '#EB3307'}
+  color: ${(p) => (p.accepted ? "#16bd13" : "#EB3307")};
 `;

@@ -18,12 +18,15 @@ export const CardOverview = () => {
 
   return (
     <>
-      <Main>Learning Cards</Main>
+      <Title>Learning Cards</Title>
       <Outlet />
     </>
   );
 };
 
-const Main = styled.main`
-  margin: 10px;
+const Title = styled.h1`
+  margin: 25px auto;
+  font-size: 24px;
+  max-width: 700px;
+  width: 100%;
 `;

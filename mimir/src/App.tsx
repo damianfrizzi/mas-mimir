@@ -7,16 +7,14 @@ import { EditCard } from "components/pages/EditCard";
 
 export default function App() {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="cards" element={<CardOverview />}>
-            <Route index element={<CardList />} />
-            <Route path=":id" element={<EditCard />} />
-          </Route>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="cards" element={<CardOverview />}>
+          <Route index element={<CardList />} />
+          <Route path=":id" element={<EditCard />} />
         </Route>
-      </Routes>
-    </>
+      </Route>
+    </Routes>
   );
 }

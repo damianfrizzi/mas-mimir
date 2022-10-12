@@ -1,5 +1,5 @@
 import { startGame } from "api/mimir-backend";
-import { Button, FlexVertical } from "components/StyledComponents";
+import { Button } from "components/StyledComponents";
 import { AppContext } from "data/Context";
 import { ActionType } from "models/Action";
 import { useContext } from "react";
@@ -12,13 +12,18 @@ export const GameIdle = () => {
     dispatch({ type: ActionType.UPDATE_GAME, game });
   };
   return (
-    <FlexVertical>
-      <ButtonStart onClick={() => start()}>Start New Game</ButtonStart>
+    <Container>
+      <Button onClick={() => start()}>Start New Game</Button>
       <h3>No game running!</h3>
-    </FlexVertical>
+    </Container>
   );
 };
 
-const ButtonStart = styled(Button)`
-  margin: 25px;
+const Container = styled.div`
+  margin: 40px;
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;

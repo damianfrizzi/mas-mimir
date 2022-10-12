@@ -4,8 +4,7 @@ import { CardsState } from "models/CardState";
 export function cardReducer(cardState: CardsState, action: Action): CardsState {
   switch (action.type) {
     case ActionType.ADD_CARD:
-      cardState.cards.push(action.card);
-      return { ...cardState };
+      return { ...cardState, cards: [...cardState.cards, action.card] };
     case ActionType.DELETE_CARD:
       return {
         ...cardState,
